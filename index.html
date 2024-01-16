@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Задание</title>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="openPopup" v-if="!showPopup">Показать</button>
+
+        <div v-if="showPopup" class="popup">
+            <div class="popup__title">
+                <span class="popup__title-main">Chagenger</span>
+                <span class="popup__title-desc">Управление транспортом</span>
+                <div class="popup__title-close" @click="closePopup">
+                    <img src="imgs/ellipse.svg" alt="O">
+                </div>
+            </div>
+            <div v-if="items.length > 8" class="popup__items">
+                <div class="popup__items--row">
+                    <div v-for="(item, i) in items.slice(0, Math.round(items.length/2))" class="popup__items-item">
+                        <div class="popup__items-name">{{item.name}}</div>
+                        <div class="popup__items-price"><span class="popup__items-dollar">$</span>{{item.price}}</div>
+                    </div>
+                </div>
+                <div class="popup__items--row">
+                    <div v-for="(item, i) in items.slice(Math.round(items.length/2), items.length-1)" class="popup__items-item">
+                        <div class="popup__items-name">{{item.name}}</div>
+                        <div class="popup__items-price"><span class="popup__items-dollar">$</span>{{item.price}}</div>
+                    </div>
+                </div>
+            </div> 
+            <div v-else-if="items.length > 4" class="popup__items--four">
+                <div v-for="(item, i) in items" class="popup__items-item">
+                    <div class="popup__items-name">{{item.name}}</div>
+                    <div class="popup__items-price"><span class="popup__items-dollar">$</span>{{item.price}}</div>
+                </div>
+            </div> 
+            <div v-else class="popup__items--less">
+                <div v-for="(item, i) in items" class="popup__items-item">
+                    <div class="popup__items-name">{{item.name}}</div>
+                    <div class="popup__items-price"><span class="popup__items-dollar">$</span>{{item.price}}</div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</body>
+
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            showPopup: false,
+            items: [
+                {name: "Отправить на стоянку", price: "400", type: "price"},
+                {name: "Отправить на стоянку", price: "400", type: "price"},
+                {name: "Отправить на стоянку", price: "400", type: "price"},
+                {name: "Отправить на стоянку", price: "400", type: "price"},
+                {name: "Отправить на стоянку", price: "400", type: "price"},
+                {name: "Отправить на стоянку", price: "400", type: "price"},
+                {name: "Отправить на стоянку", price: "400", type: "price"},
+                {name: "Отправить на стоянку", price: "400", type: "price"},
+                {name: "Отправить на стоянку", price: "400", type: "price"},
+                {name: "Отправить на стоянку", price: "400", type: "price"}
+            ]
+        },
+        methods: {
+            openPopup() {
+                this.showPopup = true;
+            },
+            closePopup() {
+                this.showPopup = false;
+            }
+        }
+    });
+</script>
+
+</html>
