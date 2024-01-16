@@ -3,6 +3,17 @@
     src: url("font/DINPro.woff");
 }
 
+$bg-color: lightgray;
+$popup-bg-gradient-start: rgba(0, 0, 0, 0.03);
+$popup-bg-gradient-end: rgba(255, 255, 255, 0.03);
+$popup-title-color: #F1F1F1;
+$popup-desc-color: rgba(241, 241, 241, 0.50);
+$popup-item-bg-start: #141A1E;
+$popup-item-bg-end: rgba(20, 26, 30, 0.32);
+$popup-item-name-color: #F1F1F1;
+$popup-item-price-color: #F1F1F1;
+$popup-item-dollar-color: #FFCD4C;
+
 * {
     margin: 0;
     padding: 0;
@@ -12,20 +23,19 @@
 
 ::-webkit-scrollbar {
     display: none;
-  }
+}
 
 body {
-    background: url('imgs/bg.png'), lightgray 50% / cover no-repeat;
-    
+    background: url('imgs/bg.png'), $bg-color 50% / cover no-repeat;
 }
 
 .popup {
     width: 100vw;
     height: 100vh;
     position: absolute;
-    background: linear-gradient(rgba(0, 0, 0, 0.03), rgba(255, 255, 255, 0.03)),
-              url('imgs/bg2.svg'),
-              url('imgs/bg3.svg');
+    background: linear-gradient($popup-bg-gradient-start, $popup-bg-gradient-end),
+                url('imgs/bg2.svg'),
+                url('imgs/bg3.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -42,27 +52,26 @@ body {
         display: flex;
         align-items: center;
 
-
         &-main {
-            color: #F1F1F1;
+            color: $popup-title-color;
             font-family: DIN;
             font-size: 3.6vw;
             font-style: normal;
             font-weight: 700;
-            line-height: 100%; /* 80px */
+            line-height: 100%;
             letter-spacing: 1.6px;
-            text-transform: uppercase; 
+            text-transform: uppercase;
         }
 
         &-desc {
-            color: rgba(241, 241, 241, 0.50);
+            color: $popup-desc-color;
             font-family: DIN;
             font-size: 2.5vw;
             font-style: normal;
             font-weight: 300;
             margin-left: 4vw;
         }
-    
+
         &-close {
             display: inline-block;
             background: url('imgs/x.svg');
@@ -110,7 +119,6 @@ body {
             flex-wrap: wrap;
             justify-content: flex-start;
         }
-        
 
         &-item {
             display: flex;
@@ -120,13 +128,13 @@ body {
             padding: 1.4vw;
             margin: 0 1.4vw 1.4vw 0;
             justify-content: space-between;
-            align-items: flex-start; 
+            align-items: flex-start;
             border-radius: 0.5vw;
-            background: linear-gradient(180deg, #141A1E 0%, rgba(20, 26, 30, 0.32) 100%);
+            background: linear-gradient(180deg, $popup-item-bg-start 0%, $popup-item-bg-end 100%);
         }
 
         &-name {
-            color: #F1F1F1;
+            color: $popup-item-name-color;
             font-family: DIN;
             font-size: 2.1vw;
             font-style: normal;
@@ -134,18 +142,16 @@ body {
         }
 
         &-price {
-            color: #F1F1F1;
+            color: $popup-item-price-color;
             font-family: DIN;
             font-size: 2.4vw;
             font-style: normal;
             font-weight: 500;
-            line-height: 110%; 
+            line-height: 110%;
         }
 
         &-dollar {
-            color: #FFCD4C;
+            color: $popup-item-dollar-color;
         }
     }
-    
 }
-
